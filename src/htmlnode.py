@@ -6,16 +6,16 @@ class HTMLNode:
         self.props = props
 
     def to_html(self):
-        raise NotImplementedError
+        raise NotImplementedError("Method not implement yet.")
 
     def props_to_html(self):
-        string = ""
-        if self.props:
-            for k, v in self.props.items():
-                string += f' {k}="{v}"'
-        return string
+        if not self.props:
+            return ""
+        return "".join(f' {k}="{v}"' for k, v in self.props.items())
 
     def __eq__(self, other):
+        if not isinstance(other, HTMLNode):
+            return NotImplemented
         return (
             self.tag == other.tag
             and self.value == other.value
@@ -33,7 +33,7 @@ class LeafNode(HTMLNode):
 
     def to_html(self):
         if self.value == None:
-            raise ValueError
+            raise ValueError("LeafNode must have a value.")
         if self.tag == None:
             return f"{self.value}"
         return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
