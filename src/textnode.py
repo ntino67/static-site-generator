@@ -1,6 +1,6 @@
 from enum import Enum
 
-from htmlnode import HTMLNode, LeafNode
+from htmlnode import LeafNode
 
 
 class TextType(Enum):
