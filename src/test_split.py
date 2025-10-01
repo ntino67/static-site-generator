@@ -1,6 +1,10 @@
 import unittest
 
-from inline_markdown import split_nodes_delimiter
+from inline_markdown import (
+    extract_markdown_images,
+    extract_markdown_links,
+    split_nodes_delimiter,
+)
 from textnode import TextNode, TextType
 
 
@@ -94,6 +98,70 @@ class TestSplitNodesDelimiter(unittest.TestCase):
             types,
             [TextType.TEXT, TextType.BOLD, TextType.TEXT, TextType.CODE, TextType.TEXT],
         )
+
+    def test_extract_markdown_images(self):
+        matches = extract_markdown_images(
+            "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png)"
+        )
+        self.assertListEqual([("image", "https://i.imgur.com/zjjcJKZ.png")], matches)
+
+    def test_extract_markdown_images_multiple(self):
+        text = "![a](url1) text ![b](url2) and ![c d](url3.png)"
+        self.assertListEqual(
+            [("a", "url1"), ("b", "url2"), ("c d", "url3.png")],
+            extract_markdown_images(text),
+        )
+
+    def test_extract_markdown_images_empty_alt(self):
+        text = "![](https://img.com/x.png)"
+        self.assertListEqual(
+            [("", "https://img.com/x.png")],
+            extract_markdown_images(text),
+        )
+
+    def test_extract_markdown_images_empty_url(self):
+        text = "![alt]()"
+        self.assertListEqual(
+            [("alt", "")],
+            extract_markdown_images(text),
+        )
+
+    def test_extract_markdown_images_ignores_links(self):
+        text = "[not image](https://x.com) and ![img](https://y.com)"
+        self.assertListEqual(
+            [("img", "https://y.com")],
+            extract_markdown_images(text),
+        )
+
+    def test_extract_markdown_links_multiple(self):
+        text = "[one](u1) some [two words](u2.png) and [three](http://u3)"
+        self.assertListEqual(
+            [("one", "u1"), ("two words", "u2.png"), ("three", "http://u3")],
+            extract_markdown_links(text),
+        )
+
+    def test_extract_markdown_links_empty_text(self):
+        text = "[](https://example.com)"
+        self.assertListEqual(
+            [("", "https://example.com")],
+            extract_markdown_links(text),
+        )
+
+    def test_extract_markdown_links_empty_url(self):
+        text = "[anchor]()"
+        self.assertListEqual(
+            [("anchor", "")],
+            extract_markdown_links(text),
+        )
+
+    def test_links_do_not_match_images(self):
+        text = "![pic](x) and [link](y)"
+        self.assertListEqual([("link", "y")], extract_markdown_links(text))
+
+    def test_no_matches(self):
+        text = "plain text with (parentheses) and [brackets] but no pairs"
+        self.assertListEqual([], extract_markdown_images(text))
+        self.assertListEqual([], extract_markdown_links(text))
 
 
 if __name__ == "__main__":
