@@ -12,10 +12,13 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
             continue
 
         parts = node.text.split(delimiter)
-        if len(parts) % 2 == 0:
-            raise ValueError("Missing delimiter")
+        if len(parts) < 3 or len(parts) % 2 == 0:
+            new_nodes.append(node)
+            continue
 
         for i, part in enumerate(parts):
+            if part == "":
+                pass
             tt = text_type if i % 2 != 0 else TextType.TEXT
             new_nodes.append(TextNode(part, tt))
     return new_nodes
@@ -71,3 +74,13 @@ def extract_markdown_images(text):
 
 def extract_markdown_links(text):
     return re.findall(r"(?<!!)\[([^\[\]]*)\]\(([^\(\)]*)\)", text)
+
+
+def text_to_textnodes(text):
+    nodes = [TextNode(text, TextType.TEXT)]
+    nodes = split_nodes_delimiter(nodes, "**", TextType.BOLD)
+    nodes = split_nodes_delimiter(nodes, "_", TextType.ITALIC)
+    nodes = split_nodes_delimiter(nodes, "`", TextType.CODE)
+    nodes = split_nodes_image(nodes)
+    nodes = split_nodes_link(nodes)
+    return nodes
