@@ -4,6 +4,8 @@ from inline_markdown import (
     extract_markdown_images,
     extract_markdown_links,
     split_nodes_delimiter,
+    split_nodes_image,
+    split_nodes_link,
 )
 from textnode import TextNode, TextType
 
@@ -162,6 +164,131 @@ class TestSplitNodesDelimiter(unittest.TestCase):
         text = "plain text with (parentheses) and [brackets] but no pairs"
         self.assertListEqual([], extract_markdown_images(text))
         self.assertListEqual([], extract_markdown_links(text))
+
+    def test_split_images_basic(self):
+        node = TextNode(
+            "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png) and another ![second image](https://i.imgur.com/3elNhQu.png)",
+            TextType.TEXT,
+        )
+        out = split_nodes_image([node])
+        self.assertListEqual(
+            [
+                TextNode("This is text with an ", TextType.TEXT),
+                TextNode("image", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
+                TextNode(" and another ", TextType.TEXT),
+                TextNode(
+                    "second image", TextType.IMAGE, "https://i.imgur.com/3elNhQu.png"
+                ),
+            ],
+            out,
+        )
+
+    def test_split_images_start_end(self):
+        node = TextNode(
+            "![a](u1) mid ![b](u2)",
+            TextType.TEXT,
+        )
+        out = split_nodes_image([node])
+        self.assertListEqual(
+            [
+                TextNode("a", TextType.IMAGE, "u1"),
+                TextNode(" mid ", TextType.TEXT),
+                TextNode("b", TextType.IMAGE, "u2"),
+            ],
+            out,
+        )
+
+    def test_split_images_adjacent(self):
+        node = TextNode("x![a](u1)![b](u2)y", TextType.TEXT)
+        out = split_nodes_image([node])
+        self.assertListEqual(
+            [
+                TextNode("x", TextType.TEXT),
+                TextNode("a", TextType.IMAGE, "u1"),
+                TextNode("b", TextType.IMAGE, "u2"),
+                TextNode("y", TextType.TEXT),
+            ],
+            out,
+        )
+
+    def test_split_images_no_images(self):
+        node = TextNode("no pics here", TextType.TEXT)
+        out = split_nodes_image([node])
+        self.assertListEqual([node], out)
+
+    def test_split_images_preserve_non_text(self):
+        img_node = TextNode("alt", TextType.IMAGE, "u")
+        out = split_nodes_image([img_node])
+        self.assertListEqual([img_node], out)
+
+    def test_split_links_basic(self):
+        node = TextNode(
+            "This has a [link one](u1) and [two](u2).",
+            TextType.TEXT,
+        )
+        out = split_nodes_link([node])
+        self.assertListEqual(
+            [
+                TextNode("This has a ", TextType.TEXT),
+                TextNode("link one", TextType.LINK, "u1"),
+                TextNode(" and ", TextType.TEXT),
+                TextNode("two", TextType.LINK, "u2"),
+                TextNode(".", TextType.TEXT),
+            ],
+            out,
+        )
+
+    def test_split_links_start_end(self):
+        node = TextNode("[a](u1) mid [b](u2)", TextType.TEXT)
+        out = split_nodes_link([node])
+        self.assertListEqual(
+            [
+                TextNode("a", TextType.LINK, "u1"),
+                TextNode(" mid ", TextType.TEXT),
+                TextNode("b", TextType.LINK, "u2"),
+            ],
+            out,
+        )
+
+    def test_split_links_adjacent(self):
+        node = TextNode("x[a](u1)[b](u2)y", TextType.TEXT)
+        out = split_nodes_link([node])
+        self.assertListEqual(
+            [
+                TextNode("x", TextType.TEXT),
+                TextNode("a", TextType.LINK, "u1"),
+                TextNode("b", TextType.LINK, "u2"),
+                TextNode("y", TextType.TEXT),
+            ],
+            out,
+        )
+
+    def test_split_links_no_links(self):
+        node = TextNode("no links here", TextType.TEXT)
+        out = split_nodes_link([node])
+        self.assertListEqual([node], out)
+
+    def test_split_links_preserve_non_text(self):
+        link_node = TextNode("t", TextType.LINK, "u")
+        out = split_nodes_link([link_node])
+        self.assertListEqual([link_node], out)
+
+    def test_mixed_images_then_links_pipeline(self):
+        # simulate pipeline: first images, then links
+        node = TextNode("t![a](iu) and [b](lu) ![c](iv)", TextType.TEXT)
+        step1 = split_nodes_image([node])
+        out = split_nodes_link(step1)
+        self.assertListEqual(
+            [
+                TextNode("t", TextType.TEXT),
+                TextNode("a", TextType.IMAGE, "iu"),
+                TextNode(" and ", TextType.TEXT),
+                TextNode("b", TextType.LINK, "lu"),
+                TextNode(" ", TextType.TEXT),
+                TextNode("c", TextType.IMAGE, "iv"),
+            ],
+            out,
+        )
 
 
 if __name__ == "__main__":
