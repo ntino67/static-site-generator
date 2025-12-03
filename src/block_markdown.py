@@ -1,5 +1,7 @@
 from enum import Enum
 
+from htmlnode import HTMLNode
+
 
 class BlockType(Enum):
     PARAGRAPH = "paragraph"
