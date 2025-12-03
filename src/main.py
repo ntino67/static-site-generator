@@ -1,11 +1,19 @@
+import os
+import shutil
+
 from block_markdown import BlockType, block_to_block_type, markdown_to_blocks
+from copytree import copytree
 from htmlnode import *
 from inline_markdown import TextNode, text_node_to_html_node, text_to_textnodes
 from textnode import TextType
 
 
 def main():
-    pass
+    src = "static"
+    dest = "public"
+    shutil.rmtree(dest)
+    os.mkdir(dest)
+    copytree(src, dest)
 
 
 def markdown_to_html_node(md):
