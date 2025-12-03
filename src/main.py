@@ -7,10 +7,11 @@ from htmlnode import *
 from inline_markdown import TextNode, text_node_to_html_node, text_to_textnodes
 from textnode import TextType
 
+src = "static"
+dest = "public"
+
 
 def main():
-    src = "static"
-    dest = "public"
     shutil.rmtree(dest)
     os.mkdir(dest)
     copytree(src, dest)
