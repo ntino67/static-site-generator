@@ -5,7 +5,7 @@ from extract_title import extract_title
 from htmlnode import *
 
 
-def generate_page(src, template, dest):
+def generate_page(src, template, dest, basepath):
     print(f"Generating page from {src} to {dest} using {template}")
     with open(src, "r") as f:
         md = f.read()
@@ -16,6 +16,8 @@ def generate_page(src, template, dest):
             html = f1.read()
             html = html.replace("{{ Title }}", title)
             html = html.replace("{{ Content }}", content)
+            html = html.replace('href="/', f'href="{basepath}')
+            html = html.replace('src="/', f'src="{basepath}')
 
     if not os.path.exists(os.path.dirname(dest)):
         os.makedirs(os.path.dirname(dest))
@@ -23,7 +25,7 @@ def generate_page(src, template, dest):
         f.write(html)
 
 
-def generate_pages_recursive(src_path, template_path, dest_path):
+def generate_pages_recursive(src_path, template_path, dest_path, basepath):
     dir = os.listdir(src_path)
     for item in dir:
         item_path = os.path.join(src_path, item)
@@ -31,7 +33,7 @@ def generate_pages_recursive(src_path, template_path, dest_path):
             if not item_path.endswith(".md"):
                 continue
             file_path = os.path.join(dest_path, item.replace(".md", ".html"))
-            generate_page(item_path, template_path, file_path)
+            generate_page(item_path, template_path, file_path, basepath)
         else:
             dir_path = os.path.join(dest_path, item)
-            generate_pages_recursive(item_path, template_path, dir_path)
+            generate_pages_recursive(item_path, template_path, dir_path, basepath)
