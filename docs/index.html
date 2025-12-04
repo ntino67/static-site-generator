@@ -1,13 +1,36 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Welcome to My Static Site</title>
-    <link href="/static-site-generator/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css" />
   </head>
+  <body class="page">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand">
+          <span class="brand__dot"></span>
+          <span>Matteo</span>
+          <span class="brand__tagline">Developer</span>
+        </div>
+        <nav class="nav">
+          <a href="/static-site-generator/">Home</a>
+          <a href="/static-site-generator/projects/">Projects</a>
+          <a href="/static-site-generator/blog/">Blog</a>
+          <a href="/static-site-generator/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-  <body>
-    <article><div><h1>Welcome to My Static Site</h1><p>This is the home page of your new static site.</p><ul><li>Read more <b>about</b> this project on the <a href="/static-site-generator/about/">About</a> page.</li><li>Browse all posts on the <a href="/static-site-generator/blog/">Blog</a> page.</li><li>Or <a href="/static-site-generator/contact/">contact me</a> if you want to say hi.</li></ul><p><img src="/static-site-generator/images/tolkien.png" alt="Tolkien is the goat"></img></p></div></article>
+    <div class="page__inner">
+      <main class="article"><div><h1>Welcome to My Static Site</h1><p>This is the home page of your new static site.</p><ul><li>Read more <b>about</b> this project on the <a href="/static-site-generator/about/">About</a> page.</li><li>Browse all posts on the <a href="/static-site-generator/blog/">Blog</a> page.</li><li>Or <a href="/static-site-generator/contact/">contact me</a> if you want to say hi.</li></ul><p><img src="/static-site-generator/images/tolkien.png" alt="Tolkien is the goat"></img></p></div></main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© 2025 Matteo.</span>
+        <span class="muted">Built with my Python static site generator.</span>
+      </div>
+    </footer>
   </body>
 </html>

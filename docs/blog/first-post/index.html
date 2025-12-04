@@ -1,13 +1,36 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My First Post</title>
-    <link href="/static-site-generator/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css" />
   </head>
+  <body class="page">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand">
+          <span class="brand__dot"></span>
+          <span>Matteo</span>
+          <span class="brand__tagline">Developer</span>
+        </div>
+        <nav class="nav">
+          <a href="/static-site-generator/">Home</a>
+          <a href="/static-site-generator/projects/">Projects</a>
+          <a href="/static-site-generator/blog/">Blog</a>
+          <a href="/static-site-generator/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-  <body>
-    <article><div><h1>My First Post</h1><p>Welcome to the blog section of this site.</p><p>Here’s a bit of inline formatting:</p><ul><li><b>Bold text</b></li><li><i>Italic text</i></li><li><code>inline code</code></li></ul><p>And a link back to the <a href="/static-site-generator/">home page</a>.</p><p>You can add more posts by creating new folders under <code>content/blog/</code>.</p></div></article>
+    <div class="page__inner">
+      <main class="article"><div><h1>My First Post</h1><p>Welcome to the blog section of this site.</p><p>Here’s a bit of inline formatting:</p><ul><li><b>Bold text</b></li><li><i>Italic text</i></li><li><code>inline code</code></li></ul><p>And a link back to the <a href="/static-site-generator/">home page</a>.</p><p>You can add more posts by creating new folders under <code>content/blog/</code>.</p></div></main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© 2025 Matteo.</span>
+        <span class="muted">Built with my Python static site generator.</span>
+      </div>
+    </footer>
   </body>
 </html>

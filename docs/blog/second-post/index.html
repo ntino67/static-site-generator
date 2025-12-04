@@ -1,14 +1,37 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Another Post</title>
-    <link href="/static-site-generator/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css" />
   </head>
+  <body class="page">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand">
+          <span class="brand__dot"></span>
+          <span>Matteo</span>
+          <span class="brand__tagline">Developer</span>
+        </div>
+        <nav class="nav">
+          <a href="/static-site-generator/">Home</a>
+          <a href="/static-site-generator/projects/">Projects</a>
+          <a href="/static-site-generator/blog/">Blog</a>
+          <a href="/static-site-generator/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-  <body>
-    <article><div><h1>Another Post</h1><p>This is another example blog post.</p><blockquote>“Content is just text with a bit of structure and style.” – A wise bear</blockquote><p>Try adding code blocks in your Markdown:</p><pre>def greet(name: str) -> str:
-    return f"Hello, {name}!"</pre><p><a href="/static-site-generator/blog/">Back to the blog index</a> or <a href="/static-site-generator/">home</a></p></div></article>
+    <div class="page__inner">
+      <main class="article"><div><h1>Another Post</h1><p>This is another example blog post.</p><blockquote>“Content is just text with a bit of structure and style.” – A wise bear</blockquote><p>Try adding code blocks in your Markdown:</p><pre>def greet(name: str) -> str:
+    return f"Hello, {name}!"</pre><p><a href="/static-site-generator/blog/">Back to the blog index</a> or <a href="/static-site-generator/">home</a></p></div></main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© 2025 Matteo.</span>
+        <span class="muted">Built with my Python static site generator.</span>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,13 +1,36 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ Title }}</title>
-    <link href="/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css" />
   </head>
+  <body class="page">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand">
+          <span class="brand__dot"></span>
+          <span>Matteo</span>
+          <span class="brand__tagline">Developer</span>
+        </div>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/projects/">Projects</a>
+          <a href="/blog/">Blog</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-  <body>
-    <article>{{ Content }}</article>
+    <div class="page__inner">
+      <main class="article">{{ Content }}</main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© 2025 Matteo.</span>
+        <span class="muted">Built with my Python static site generator.</span>
+      </div>
+    </footer>
   </body>
 </html>
