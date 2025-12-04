@@ -76,7 +76,7 @@ def markdown_to_html_node(md):
             case BlockType.OL:
                 children.append(parse_ol(block))
             case BlockType.HR:
-                children.append(parse_hr(block))
+                children.append(parse_hr())
             case _:
                 pass
     wrapper = ParentNode("div", children)
