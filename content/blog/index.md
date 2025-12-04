@@ -1,11 +1,10 @@
 # Blog
 
-Welcome to the blog index. Here are some posts:
+Notes, experiments, and write-ups.  
+Not polished essays — just clear thinking made public.
 
-- [My First Post](/blog/first-post/)
-- [Another Post](/blog/second-post/)
+---
 
-You can add more posts by creating new folders under `content/blog/`
-and then linking to them here.
+## Posts
 
-[Back to Home](/)
+- [First Post](/blog/first-post/)

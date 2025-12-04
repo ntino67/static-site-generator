@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>My First Post</title>
+    <title>First Post</title>
     <link rel="stylesheet" href="/static-site-generator/index.css" />
   </head>
   <body class="page">
@@ -23,7 +23,21 @@
     </header>
 
     <div class="page__inner">
-      <main class="article"><div><h1>My First Post</h1><p>Welcome to the blog section of this site.</p><p>Here’s a bit of inline formatting:</p><ul><li><b>Bold text</b></li><li><i>Italic text</i></li><li><code>inline code</code></li></ul><p>And a link back to the <a href="/static-site-generator/">home page</a>.</p><p>You can add more posts by creating new folders under <code>content/blog/</code>.</p></div></main>
+      <main class="article"><div><h1>First Post</h1><p>I built this static site generator to understand everything that happens between Markdown and a deployed website.  
+No frameworks, no plugins, no hidden layers — just parsing, transforming, and writing files.</p><p>Most tools abstract this away. That’s useful, but it also hides the mechanics.  
+I wanted to see the mechanics. I just want to learn at the end of the day.</p><p>---</p><h2>Why build my own SSG</h2><p>Three reasons:</p><p>1. <b>Control</b>  
+   I want a portfolio where nothing is accidental. No CSS I didn’t write, no JavaScript I didn’t ask for, no build pipeline I can’t explain.</p><p>2. <b>Understanding</b>  
+   Turning Markdown into HTML is a finite sequence of steps:
+   - break into blocks
+   - classify block types
+   - parse inline formatting
+   - generate nodes
+   - assemble pages
+   - apply templates</p><p>3. <b>Simplicity</b>  
+   Existing SSGs solve problems I don’t have. I just want Markdown → HTML → clean pages.</p><p>---</p><h2>What the generator does</h2><ul><li>Converts Markdown into a tree of HTML nodes</li><li>Handles headings, paragraphs, code blocks, quotes, lists</li><li>Handles inline bold, italics, and code spans</li><li>Wraps content in a template</li><li>Outputs a full static site folder</li></ul><p>There’s no configuration layer. No theme system. No plugins.  
+Just functions that do exactly what they say.</p><p>---</p><h2>What I learned</h2><ul><li>A static site is just a directory structure and predictable URLs</li><li>The hardest part of Markdown is not the syntax — it’s the edge cases</li><li>Good CSS matters more when the HTML is minimal</li><li>Writing a generator forces a higher level of discipline in how pages are organized</li></ul><p>This project made me rethink how much tooling I actually need for personal projects.</p><p>---</p><h2>What’s next</h2><p>I’ll keep extending the generator as the site grows:  
+more content types, better routing, maybe metadata blocks.  
+But the goal stays the same: understand every layer.</p><p>For now, it’s enough. The site builds, the pages load, and the system is mine.</p></div></main>
     </div>
 
     <footer class="site-footer">

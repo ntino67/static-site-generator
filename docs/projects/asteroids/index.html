@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Asteroids — Python Game</title>
+    <link rel="stylesheet" href="/static-site-generator/index.css" />
+  </head>
+  <body class="page">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand">
+          <span class="brand__dot"></span>
+          <span>Matteo</span>
+          <span class="brand__tagline">Developer</span>
+        </div>
+        <nav class="nav">
+          <a href="/static-site-generator/">Home</a>
+          <a href="/static-site-generator/projects/">Projects</a>
+          <a href="/static-site-generator/blog/">Blog</a>
+          <a href="/static-site-generator/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page__inner">
+      <main class="article"><div><h1>Asteroids — Python Game</h1><p>Asteroids is a small arcade-style game I built to practice clean game-loop structure, collision handling, and simple 2D rendering.  
+The goal was not to recreate the original perfectly, but to understand how these games work under the hood.</p><p><a href="https://github.com/ntino67/asteroids">GitHub</a></p><p>---</p><h2>Features</h2><ul><li>Core <b>game loop</b> with update + render phases</li><li>Player ship with rotation, acceleration, and inertia</li><li>Screen wrap-around (leaving one edge re-enters on the opposite side)</li><li>Randomly generated asteroids with velocity + direction</li><li>Collision detection (ship–asteroid and bullet–asteroid)</li><li>Basic particle-like explosion effect</li><li>Minimal UI: score, lives, clean black starfield look</li></ul><p>---</p><h2>Architecture</h2><p>The game is structured around a few predictable components:</p><h3><b>Game loop</b></h3><p>Handles:</p><ul><li>input</li><li>physics updates</li><li>collision resolution</li><li>rendering</li></ul><p>This separates logic from drawing and keeps each frame consistent.</p><h3><b>Entities</b></h3><ul><li><b>Ship</b></li><li><b>Asteroids</b> (large → medium → small upon destruction)</li><li><b>Bullets</b></li></ul><p>Each entity has:</p><ul><li>position</li><li>velocity</li><li>orientation</li><li>update()</li><li>draw()</li></ul><h3><b>Collision system</b></h3><p>Axis-aligned radius-based checks for speed and simplicity.</p><h3><b>Rendering</b></h3><p>Depending on the version you built:</p><ul><li>either Pygame</li><li>or a minimal custom renderer</li></ul><p>The focus is on behavior, not polishing graphics.</p><p>---</p><h2>Why this project matters</h2><p>It’s a small game, but it introduces several fundamentals that apply to any interactive system:</p><ul><li>consistent time-stepped updates</li><li>state machines (alive, exploding, invulnerable, etc.)</li><li>deterministic physics loops</li><li>clean separation between model and rendering</li><li>debugging moving objects and collision boundaries</li><li>the importance of predictable input handling</li></ul><p>Building a game forces you to write code that <b>reacts</b> rather than just computes.</p><p>---</p><h2>What I learned</h2><ul><li>How arcade physics differ from real physics</li><li>Why state updates must be decoupled from drawing</li><li>How even simple games require structural discipline</li><li>How to avoid “spaghetti game loops”</li><li>How to design small, composable entity classes</li></ul><p>It reinforced the idea that good architecture matters even in tiny projects.</p><p>---</p><h2>Links</h2><ul><li><a href="/static-site-generator/projects/">Back to Projects</a></li></ul></div></main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© 2025 Matteo.</span>
+        <span class="muted">Built with my Python static site generator.</span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AI What-If — Health Risk Explorer</title>
+    <link rel="stylesheet" href="/static-site-generator/index.css" />
+  </head>
+  <body class="page">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="brand">
+          <span class="brand__dot"></span>
+          <span>Matteo</span>
+          <span class="brand__tagline">Developer</span>
+        </div>
+        <nav class="nav">
+          <a href="/static-site-generator/">Home</a>
+          <a href="/static-site-generator/projects/">Projects</a>
+          <a href="/static-site-generator/blog/">Blog</a>
+          <a href="/static-site-generator/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page__inner">
+      <main class="article"><div><h1>AI What-If — Health Risk Explorer</h1><p>AI What-If is a full stack system to estimate heart-disease risk and propose lifestyle changes that reduce it.  
+It combines statistical modeling, an HTTP API, and an interactive front-end.</p><p><a href="https://aiwhatif.nightingaleheart.com/">Demo</a></p><p>---</p><h2>Features</h2><ul><li>Random Forest model trained on cleaned survey data</li><li>Counterfactual generation: “what should a user change to reduce risk?”</li><li>R API (plumber) exposing prediction and explanations</li><li>React + TypeScript UI for data input and visualization</li><li>Docker/Podman containers for reproducible environments</li><li>Validation, transformation, and error-handling pipelines</li></ul><p>---</p><h2>Architecture</h2><p><b>Backend (R):</b></p><ul><li>Data cleaning scripts</li><li>Model training (Random Forest)</li><li>Prediction API</li><li>Counterfactual engine</li><li>Logging + validation</li></ul><p><b>Frontend (React):</b></p><ul><li>Controlled form for health data</li><li>Risk visualization</li><li>Counterfactual suggestions</li><li>Async requests to the API</li></ul><p><b>DevOps:</b></p><ul><li>Containerized backend</li><li>Containerized frontend</li><li>Shared environment variables</li><li>Reproducible builds</li></ul><p>---</p><h2>Why this project matters</h2><p>I built a system that goes from raw data to a real user-facing tool.</p><p>This project taught me:</p><ul><li>how statistical models integrate into web software</li><li>how to build an API around a non-traditional back-end</li><li>how to keep a pipeline reproducible with containers</li><li>how to clean and normalize messy real-world data</li><li>how UI and data modeling influence each other</li></ul><p>---</p><h2>Links</h2><ul><li><a href="/static-site-generator/projects/">Back to Projects</a></li></ul></div></main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>© 2025 Matteo.</span>
+        <span class="muted">Built with my Python static site generator.</span>
+      </div>
+    </footer>
+  </body>
+</html>
