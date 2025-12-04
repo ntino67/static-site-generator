@@ -11,10 +11,9 @@ dest = "docs"
 
 
 def main():
+    basepath = "/"
     if len(sys.argv) > 1:
-        basepath = sys.argv[0]
-    else:
-        basepath = "/"
+        basepath = sys.argv[1]
     if os.path.exists(dest):
         shutil.rmtree(dest)
     os.mkdir(dest)
