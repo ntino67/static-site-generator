@@ -11,8 +11,8 @@ dest = "docs"
 
 
 def main():
-    if len(sys.argv[1]) > 0:
-        basepath = sys.argv[1]
+    if len(sys.argv) > 1:
+        basepath = sys.argv[0]
     else:
         basepath = "/"
     if os.path.exists(dest):
