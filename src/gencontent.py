@@ -10,17 +10,28 @@ def generate_page(src, template, dest):
     with open(src, "r") as f:
         md = f.read()
         title = extract_title(md)
-        print("MD length:", len(md))
         node = markdown_to_html_node(md)
-        print("NODE:", node)
         content = node.to_html()
-        print("CONTENT length:", len(content))
         with open(template, "r") as f1:
             html = f1.read()
             html = html.replace("{{ Title }}", title)
             html = html.replace("{{ Content }}", content)
 
     if not os.path.exists(os.path.dirname(dest)):
-        os.mkdir(os.path.dirname(dest))
+        os.makedirs(os.path.dirname(dest))
     with open(dest, "w") as f:
         f.write(html)
+
+
+def generate_pages_recursive(src_path, template_path, dest_path):
+    dir = os.listdir(src_path)
+    for item in dir:
+        item_path = os.path.join(src_path, item)
+        if os.path.isfile(item_path):
+            if not item_path.endswith(".md"):
+                continue
+            file_path = os.path.join(dest_path, item.replace(".md", ".html"))
+            generate_page(item_path, template_path, file_path)
+        else:
+            dir_path = os.path.join(dest_path, item)
+            generate_pages_recursive(item_path, template_path, dir_path)

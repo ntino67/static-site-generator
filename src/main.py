@@ -2,18 +2,18 @@ import os
 import shutil
 
 from copytree import copytree
-from gencontent import generate_page
+from gencontent import generate_pages_recursive
 
-src = "content/index.md"
+src = "content"
 template = "template.html"
-dest = "public/index.html"
+dest = "public"
 
 
 def main():
     shutil.rmtree("public")
     os.mkdir("public")
     copytree("static", "public")
-    generate_page(src, template, dest)
+    generate_pages_recursive(src, template, dest)
 
 
 if __name__ == "__main__":
