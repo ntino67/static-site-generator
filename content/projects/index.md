@@ -61,7 +61,7 @@ Built to understand the internals of SSGs and to keep full control over my perso
 
 **Stack:** Python
 
-[GitHub](https://github.com/ntino67/asteroids)
+[GitHub](https://github.com/ntino67/static-site-generator)
 
 Arcade-style Asteroids remake built to practice clean game-loop structure, entity design, and collision handling.
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-from htmlnode import ParentNode
+from htmlnode import LeafNode, ParentNode
 from inline_markdown import TextNode, text_node_to_html_node, text_to_textnodes
 from textnode import TextType
 
@@ -12,6 +12,7 @@ class BlockType(Enum):
     QUOTE = "quote"
     UL = "unordered list"
     OL = "ordered list"
+    HR = "horizontal rules"
 
 
 def markdown_to_blocks(md):
@@ -26,7 +27,10 @@ def markdown_to_blocks(md):
 
 
 def block_to_block_type(md):
-    if md.startswith("```") and md.endswith("```"):
+    md_stripped = md.strip()
+    if md_stripped == "---":
+        return BlockType.HR
+    elif md.startswith("```") and md.endswith("```"):
         return BlockType.CODE
     elif md.startswith("#"):
         count = 0
@@ -37,7 +41,7 @@ def block_to_block_type(md):
                 return BlockType.HEADING
             else:
                 return BlockType.PARAGRAPH
-    elif all(line.startswith(">") for line in md.splitlines()):
+    elif all(line.startswith(">") for line in md.splitlines() if line.strip()):
         return BlockType.QUOTE
     elif all(line.startswith("- ") for line in md.splitlines()):
         return BlockType.UL
@@ -71,6 +75,8 @@ def markdown_to_html_node(md):
                 children.append(parse_ul(block))
             case BlockType.OL:
                 children.append(parse_ol(block))
+            case BlockType.HR:
+                children.append(parse_hr(block))
             case _:
                 pass
     wrapper = ParentNode("div", children)
@@ -145,3 +151,7 @@ def parse_ol(md):
             html_children.append(text_node_to_html_node(tnode))
         li_nodes.append(ParentNode("li", children=html_children))
     return ParentNode("ol", children=li_nodes)
+
+
+def parse_hr():
+    return LeafNode("hr", "")
