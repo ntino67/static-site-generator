@@ -92,7 +92,7 @@ On GitHub:
 Or clone directly:
 
 ```
-git clone https://github.com/YOUR_USERNAME/static-site-generator.git
+git clone https://github.com/ntino67/static-site-generator.git
 cd static-site-generator
 ```
 
@@ -244,4 +244,3 @@ build_local.bat # Windows
 ./build_prod.sh # Linux/macOS
 build_prod.bat # Windows
 ```
-
