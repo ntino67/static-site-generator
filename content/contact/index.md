@@ -8,8 +8,6 @@ If you want to discuss a project, internship, or collaboration, reach out direct
 
 `ntino67@pm.me`
 
-Replace with your real address when deploying.
-
 ---
 
 ## Socials
