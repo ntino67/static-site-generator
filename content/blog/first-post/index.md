@@ -1,10 +1,9 @@
 # First Post
 
-I built this static site generator to understand everything that happens between Markdown and a deployed website.  
-No frameworks, no plugins, no hidden layers — just parsing, transforming, and writing files.
+I built this static site generator to understand everything that happens between Markdown and a deployed website.
 
-Most tools abstract this away. That’s useful, but it also hides the mechanics.  
-I wanted to see the mechanics. I just want to learn at the end of the day.
+One thing that I really try to strive to is reducing noise, that's why I more often than not choose the rawest experience. Neovim config, CLI first, simplest tools first.
+I feel like most of our tools nowadays are bloated and solving problems 99% people don't have.
 
 ---
 
@@ -14,6 +13,7 @@ Three reasons:
 
 1. **Control**  
    I want a portfolio where nothing is accidental. No CSS I didn’t write, no JavaScript I didn’t ask for, no build pipeline I can’t explain.
+   THIS is something I did and I know HOW this works, I feel like this is very important.
 
 2. **Understanding**  
    Turning Markdown into HTML is a finite sequence of steps:
@@ -37,15 +37,12 @@ Three reasons:
 - Wraps content in a template
 - Outputs a full static site folder
 
-There’s no configuration layer. No theme system. No plugins.  
-Just functions that do exactly what they say.
-
 ---
 
 ## What I learned
 
 - A static site is just a directory structure and predictable URLs
-- The hardest part of Markdown is not the syntax — it’s the edge cases
+- The hardest part of Markdown is not the syntax, it’s the edge cases
 - Good CSS matters more when the HTML is minimal
 - Writing a generator forces a higher level of discipline in how pages are organized
 
@@ -53,10 +50,6 @@ This project made me rethink how much tooling I actually need for personal proje
 
 ---
 
-## What’s next
+## What's next
 
-I’ll keep extending the generator as the site grows:  
-more content types, better routing, maybe metadata blocks.  
-But the goal stays the same: understand every layer.
-
-For now, it’s enough. The site builds, the pages load, and the system is mine.
+Trying to keep it updated as much as I can.

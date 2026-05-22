@@ -1,19 +1,20 @@
 # About
 
-I’m Matteo Heidelberger, a computer science student focusing on back-end engineering, developer tooling, and clean software design.
+I'm Matteo Heidelberger, a computer science student focused on back-end engineering, developer tooling, and clean software design.
 
 I prefer **small, understandable systems** over complicated stacks.  
-If something can be expressed with a few clear modules, that’s the path I take.
+If something can be expressed with a few clear modules, that's the path I take.
 
 ---
 
 ## Background
 
-I’ve worked on projects involving:
+I've worked on projects involving:
 
-- **C#, .NET, WPF, MVVM** → building production-style desktop apps ([EasySave](/projects/easysave/))
-- **R, plumber, Random Forests** → designing health-risk predictors and counterfactual engines ([AI What-If](/projects/ai-whatif))
-- **React, TypeScript** → front-end integration with statistical back-ends
+- **Python, FastAPI, microservices** → event-driven systems with an API gateway, Postgres-per-service, and a Redis event bus ([Transvirex Logistics](/projects/transvirex/))
+- **C#, .NET, WPF, MVVM** → desktop applications with real architecture ([EasySave](/projects/easysave/))
+- **Python CLI tooling** → multi-format config parsing, dependency graphs, structured error handling ([Taskforge](/projects/taskforge/))
+- **React, TypeScript** → front-end integration with REST and GraphQL back-ends
 - **Containers, Linux, CI** → reproducible environments and simple deployment
 - **Git and structured workflows** → clean commit histories, automation scripts, modular repos
 
@@ -24,23 +25,19 @@ I study at CESI Strasbourg, where I focus on software engineering, system design
 ## How I work
 
 - I write **modular code**, not massive files.
-- I want **clarity first**, optimization second. I believe that good naming can prevent the use of comments. Leading to a easier code to maintain.
-- I use **tests, automation, and consistent patterns** to avoid surprises later.
-- I’m comfortable taking ambiguous requirements and reducing them to something implementable.
-- I track design, decisions, and architecture as part of the codebase.
+- **Clarity first, optimization second.** Good naming prevents the need for most comments, and code that reads cleanly is code that's easier to maintain.
+- I use **tests (I try to), automation, and consistent patterns** to avoid surprises later.
+- I'm comfortable taking ambiguous requirements and reducing them to something implementable.
+- I track design decisions and architecture as part of the codebase, not separate from it.
 
-My goal is to make the system predictable for anyone reading it—including future me.
+My goal is to make the system predictable for anyone reading it — including future me.
 
 ---
 
 ## Outside of code
 
-I like structured learning: finance, training, writing, tools, and workflows.
+I am also a rookie photographer, I'm considering building a gallery to show my work.
 
-I'm interested in entrepreneurship and I practice a lot of sports such as Volleyball and Badminton.
+This portfolio — built with my own static site generator — is part of that mindset.
 
-I build systems for myself the same way I build software: minimal, deliberate, and scalable.
-
-This portfolio—built with my own static site generator is part of that mindset.
-
-If you want to see what I’ve built, go to the [Projects](/projects/) page.
+If you want to see what I've built, head to the [Projects](/projects/) page.
